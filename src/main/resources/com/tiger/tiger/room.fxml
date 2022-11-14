@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiger.tiger.RoomController">
+   <children>
+      <Pane prefHeight="550.0" prefWidth="622.0" style="-fx-background-color: #fff;">
+         <children>
+            <Button fx:id="btnNext" layoutX="544.0" layoutY="502.0" mnemonicParsing="false" onAction="#onbtnNext" prefHeight="34.0" prefWidth="62.0" style="-fx-background-color: #000;" text="ถัดไป" textFill="WHITE">
+               <font>
+                  <Font name="Noto Sans Thai Bold" size="14.0" />
+               </font>
+            </Button>
+            <Label layoutX="164.0" layoutY="44.0" text="ผู้ดูแลบันทึกขนาดห้องและชั่วโมงการใช้งานให้ลูกค้า">
+               <font>
+                  <Font name="Noto Sans Thai Regular" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="74.0" layoutY="111.0" text="ประเภทห้อง    :">
+               <font>
+                  <Font name="Noto Sans Thai Regular" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="74.0" layoutY="183.0" text="จำนวน         :">
+               <font>
+                  <Font name="Noto Sans Thai Regular" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="74.0" layoutY="255.0" text="ราคา            :">
+               <font>
+                  <Font name="Noto Sans Thai Regular" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="74.0" layoutY="328.0" text="รหัสสมาชิก  :">
+               <font>
+                  <Font name="Noto Sans Thai Regular" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="74.0" layoutY="406.0" text="เวลาจอง   :">
+               <font>
+                  <Font name="Noto Sans Thai Regular" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="333.0" layoutY="406.0" text="เวลาคืน   :">
+               <font>
+                  <Font name="Noto Sans Thai Regular" size="20.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="chRoom" layoutX="220.0" layoutY="111.0" prefHeight="33.0" prefWidth="163.0" style="-fx-background-color: #fff; -fx-border-color: #000;" />
+            <TextField fx:id="txtMember" layoutX="220.0" layoutY="328.0" prefHeight="34.0" prefWidth="151.0" />
+            <Label layoutX="258.0" layoutY="183.0" text="คน">
+               <font>
+                  <Font name="Noto Sans Thai Regular" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="258.0" layoutY="255.0" text="บาท  ต่อ 3 ชั่วโมง">
+               <font>
+                  <Font name="Noto Sans Thai Regular" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="220.0" layoutY="183.0" text="0">
+               <font>
+                  <Font name="Noto Sans Thai Regular" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="220.0" layoutY="255.0" text="40">
+               <font>
+                  <Font name="Noto Sans Thai Regular" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtBook" layoutX="172.0" layoutY="406.0" prefHeight="34.0" prefWidth="151.0" />
+            <TextField fx:id="txtReturn" layoutX="424.0" layoutY="405.0" prefHeight="34.0" prefWidth="151.0" />
+            <Button fx:id="btnCheck" layoutX="383.0" layoutY="333.0" mnemonicParsing="false" onAction="#onbtnCheck" prefHeight="23.0" prefWidth="62.0" style="-fx-background-color: #000;" text="ตรวจสอบ" textFill="WHITE">
+               <font>
+                  <Font name="Noto Sans Thai Bold" size="10.0" />
+               </font>
+            </Button>
+            <Label fx:id="txtMember2" layoutX="229.0" layoutY="367.0" textFill="#2de423">
+               <font>
+                  <Font name="Noto Sans Thai Regular" size="10.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
