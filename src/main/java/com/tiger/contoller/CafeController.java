@@ -1,4 +1,4 @@
-package com.tiger.tiger;
+package com.tiger.contoller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -6,42 +6,22 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.paint.Color;
+import javafx.scene.control.ScrollPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
-public class RoomController {
-
-    @FXML
-    private Button btnCheck;
+public class CafeController {
 
     @FXML
     private Button btnNext;
 
     @FXML
-    private ChoiceBox<?> chRoom;
+    private ScrollPane txtMenu;
 
     @FXML
-    private TextField txtBook;
-
-    @FXML
-    private TextField txtMember;
-
-    @FXML
-    private Label txtMember2;
-
-    @FXML
-    private TextField txtReturn;
-
-    @FXML
-    void onbtnCheck(ActionEvent event) {
-        txtMember2.setText("เข้าร่วมสมาชิก!");
-    }
+    private ScrollPane txtOrder;
 
     @FXML
     void onbtnNext(ActionEvent event) throws IOException {
@@ -53,4 +33,5 @@ public class RoomController {
         popup.setScene(scene);
         popup.show();
     }
+
 }

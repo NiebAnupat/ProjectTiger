@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="548.0" prefWidth="384.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiger.tiger.ReceiptController">
+<AnchorPane prefHeight="548.0" prefWidth="384.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiger.contoller.ReceiptController">
    <children>
       <Line endX="220.4000244140625" endY="125.80001831054688" layoutX="140.0" layoutY="21.0" startX="-116.4000244140625" startY="125.80001831054688" />
       <Label fx:id="txtReceiptID" layoutX="130.0" layoutY="20.0" text="ใบเสร็จ #0000">

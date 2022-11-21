@@ -70,7 +70,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.tiger.tiger/com.tiger.tiger.TigerCWS</mainClass>
+                            <mainClass>com.tiger.tiger/com.tiger.contoller.TigerCWS</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>

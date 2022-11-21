@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="550.0" prefWidth="622.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiger.tiger.CafeController">
+<AnchorPane prefHeight="550.0" prefWidth="622.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiger.contoller.CafeController">
    <children>
       <Label layoutX="55.0" layoutY="46.0" text="รายการอาหาร / เครื่องดื่ม">
          <font>

@@ -1,4 +1,4 @@
-package com.tiger.tiger;
+package com.tiger.contoller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
