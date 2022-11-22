@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane prefHeight="540.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiger.contoller.MainController">
+<AnchorPane prefHeight="540.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiger.Controller.MainController">
    <children>
       <BorderPane fx:id="bpMain" prefHeight="540.0" prefWidth="850.0" style="-fx-background-color: #fff;">
          <left>

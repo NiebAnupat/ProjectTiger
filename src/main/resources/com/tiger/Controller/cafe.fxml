@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="550.0" prefWidth="622.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiger.contoller.CafeController">
+<AnchorPane prefHeight="550.0" prefWidth="622.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiger.Controller.CafeController">
    <children>
       <Label layoutX="55.0" layoutY="46.0" text="รายการอาหาร / เครื่องดื่ม">
          <font>
@@ -27,7 +27,7 @@
          <children>
             <VBox prefHeight="382.0" prefWidth="278.0">
                <children>
-                  <CheckBox mnemonicParsing="false" prefHeight="42.0" prefWidth="295.0" stylesheets="@CSS/Checkbox.css" text="นมร้อน                                      25 .-">
+                  <CheckBox fx:id="hotMilk" mnemonicParsing="false" prefHeight="42.0" prefWidth="295.0" stylesheets="@CSS/Checkbox.css" text="นมร้อน" userData="25">
                      <font>
                         <Font name="Noto Sans Thai Regular" size="14.0" />
                      </font>
@@ -38,7 +38,7 @@
                         <Insets />
                      </opaqueInsets>
                   </CheckBox>
-                  <CheckBox mnemonicParsing="false" prefHeight="42.0" prefWidth="295.0" stylesheets="@CSS/Checkbox.css" text="นมเย็น                                       30 .-">
+                  <CheckBox fx:id="coldMilk" mnemonicParsing="false" prefHeight="42.0" prefWidth="295.0" stylesheets="@CSS/Checkbox.css" text="นมเย็น                                       30 .-">
                      <font>
                         <Font name="Noto Sans Thai Regular" size="14.0" />
                      </font>
@@ -49,7 +49,7 @@
                         <Insets />
                      </opaqueInsets>
                   </CheckBox>
-                  <CheckBox mnemonicParsing="false" prefHeight="42.0" prefWidth="295.0" stylesheets="@CSS/Checkbox.css" text="นมปั่น                                        35 .-">
+                  <CheckBox fx:id="fabpeMilkss" mnemonicParsing="false" prefHeight="42.0" prefWidth="295.0" stylesheets="@CSS/Checkbox.css" text="นมปั่น                                        35 .-">
                      <font>
                         <Font name="Noto Sans Thai Regular" size="14.0" />
                      </font>
@@ -60,7 +60,7 @@
                         <Insets />
                      </opaqueInsets>
                   </CheckBox>
-                  <CheckBox mnemonicParsing="false" prefHeight="42.0" prefWidth="295.0" stylesheets="@CSS/Checkbox.css" text="กาแฟร้อน                                  30 .-">
+                  <CheckBox fx:id="hotCoffee" mnemonicParsing="false" prefHeight="42.0" prefWidth="295.0" stylesheets="@CSS/Checkbox.css" text="กาแฟร้อน                                  30 .-">
                      <font>
                         <Font name="Noto Sans Thai Regular" size="14.0" />
                      </font>
@@ -71,7 +71,7 @@
                         <Insets />
                      </opaqueInsets>
                   </CheckBox>
-                  <CheckBox mnemonicParsing="false" prefHeight="42.0" prefWidth="295.0" stylesheets="@CSS/Checkbox.css" text="กาแฟเย็น                                   35 .-">
+                  <CheckBox fx:id="coldCoffee" mnemonicParsing="false" prefHeight="42.0" prefWidth="295.0" stylesheets="@CSS/Checkbox.css" text="กาแฟเย็น                                   35 .-">
                      <font>
                         <Font name="Noto Sans Thai Regular" size="14.0" />
                      </font>
@@ -82,7 +82,7 @@
                         <Insets />
                      </opaqueInsets>
                   </CheckBox>
-                  <CheckBox mnemonicParsing="false" prefHeight="42.0" prefWidth="295.0" stylesheets="@CSS/Checkbox.css" text="น้ำผลไม้                                     30 .-">
+                  <CheckBox fx:id="juice" mnemonicParsing="false" prefHeight="42.0" prefWidth="295.0" stylesheets="@CSS/Checkbox.css" text="น้ำผลไม้                                     30 .-">
                      <font>
                         <Font name="Noto Sans Thai Regular" size="14.0" />
                      </font>
@@ -93,7 +93,7 @@
                         <Insets />
                      </opaqueInsets>
                   </CheckBox>
-                  <CheckBox mnemonicParsing="false" prefHeight="42.0" prefWidth="295.0" stylesheets="@CSS/Checkbox.css" text="เค้ก                                           35 .-">
+                  <CheckBox fx:id="cake" mnemonicParsing="false" prefHeight="42.0" prefWidth="295.0" stylesheets="@CSS/Checkbox.css" text="เค้ก                                           35 .-">
                      <font>
                         <Font name="Noto Sans Thai Regular" size="14.0" />
                      </font>
@@ -104,7 +104,7 @@
                         <Insets />
                      </opaqueInsets>
                   </CheckBox>
-                  <CheckBox mnemonicParsing="false" prefHeight="42.0" prefWidth="295.0" stylesheets="@CSS/Checkbox.css" text="บราวนี่                                       25 .-">
+                  <CheckBox fx:id="brownie" mnemonicParsing="false" prefHeight="42.0" prefWidth="295.0" stylesheets="@CSS/Checkbox.css" text="บราวนี่                                       25 .-">
                      <font>
                         <Font name="Noto Sans Thai Regular" size="14.0" />
                      </font>
@@ -121,9 +121,9 @@
       </Pane>
       <Pane layoutX="319.0" layoutY="96.0" prefHeight="382.0" prefWidth="278.0" style="-fx-background-color: #DDDDDD; -fx-background-radius: 5;">
          <children>
-            <VBox prefHeight="382.0" prefWidth="278.0">
+            <VBox fx:id="menuList" prefHeight="382.0" prefWidth="278.0">
                <children>
-                  <HBox prefHeight="42.0" prefWidth="278.0">
+                  <HBox>
                      <children>
                         <Label prefHeight="42.0" prefWidth="140.0" text="กาแฟร้อน">
                            <font>
@@ -141,7 +141,7 @@
                               <Insets left="10.0" />
                            </padding>
                         </Label>
-                        <Spinner prefHeight="27.0" prefWidth="62.0" stylesheets="@CSS/Spinner.css">
+                        <Spinner fx:id="mySpinner" editable="true" prefHeight="27.0" prefWidth="62.0" stylesheets="@../CustomControl/CSS/Spinner.css">
                            <HBox.margin>
                               <Insets left="10.0" top="9.0" />
                            </HBox.margin>

@@ -4,6 +4,6 @@ module com.tiger.tiger {
     requires javafx.graphics;
 
 
-    opens com.tiger.contoller to javafx.fxml;
-    exports com.tiger.contoller;
+    opens com.tiger.Controller to javafx.fxml;
+    exports com.tiger.Controller;
 }

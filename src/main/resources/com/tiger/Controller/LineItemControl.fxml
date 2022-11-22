@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox fx:id="lineItem" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="lblItemName" prefHeight="42.0" prefWidth="140.0" text="กาแฟร้อน">
+         <font>
+            <Font name="Noto Sans Thai Regular" size="14.0" />
+         </font>
+         <padding>
+            <Insets left="20.0" />
+         </padding>
+      </Label>
+      <Label fx:id="lblItemPrice" prefHeight="42.0" prefWidth="55.0" text="30 .-">
+         <font>
+            <Font name="Noto Sans Thai Regular" size="14.0" />
+         </font>
+         <padding>
+            <Insets left="10.0" />
+         </padding>
+      </Label>
+      <Spinner fx:id="mySpinner" editable="true" prefHeight="27.0" prefWidth="62.0" stylesheets="@../CustomControl/CSS/Spinner.css">
+         <HBox.margin>
+            <Insets left="10.0" top="9.0" />
+         </HBox.margin>
+      </Spinner>
+   </children>
+</HBox>
