@@ -11,9 +11,9 @@ import javafx.scene.text.Font;
 public class LineItemControl {
 
     private String itemName;
-    private double itemPrice;
+    private int itemPrice;
 
-    public LineItemControl(String itemName, double itemPrice) {
+    public LineItemControl(String itemName, int itemPrice) {
         this.itemName = itemName;
         this.itemPrice = itemPrice;
     }

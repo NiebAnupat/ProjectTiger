@@ -28,8 +28,7 @@ public class CafeController implements Initializable {
     @FXML
     private ScrollPane txtOrder;
 
-    @FXML
-    private Spinner<Integer> mySpinner;
+
 
     @FXML
     private CheckBox cake;
@@ -55,22 +54,22 @@ public class CafeController implements Initializable {
     @FXML
     private CheckBox brownie;
 
-    private ListView<?> menuList;
+    @FXML
+    private ListView<HBox> menuList;
 
     private String menuName;
-    private double menuPrice;
+    private int menuPrice;
 
     @Override
     public void initialize (URL url, ResourceBundle resourceBundle) {
 
-//        menuList = new HBox();
+        //        menuList = new HBox();
 
-        mySpinner.setValueFactory( new SpinnerValueFactory.IntegerSpinnerValueFactory( 1, 15, 1 ) );
 
         hotMilk.setOnAction( event -> {
             if ( hotMilk.isSelected() ) {
                 menuName = hotMilk.getText();
-                menuPrice = 25.00;
+                menuPrice = 25;
                 try {
                     addMenu( menuName, menuPrice );
                 } catch (IOException e) {
@@ -91,12 +90,12 @@ public class CafeController implements Initializable {
         popup.show();
     }
 
-    public void addMenu (String name, double price) throws IOException {
-//        LineItemControl lineItem = new LineItemControl( name,price );
-//        menuList.getChildren().add( new LineItemControl( name,price ).getLineItem());
-//        menuList.getChildren().add( lineItem );
-
-//        menuList.setItems();
+    public void addMenu (String name, int price) throws IOException {
+        //        LineItemControl lineItem = new LineItemControl( name,price );
+        //        menuList.getChildren().add( new LineItemControl( name,price ).getLineItem());
+        //        menuList.getChildren().add( lineItem );
+        //        menuList.setItems();
+        menuList.getItems().add( new LineItemControl( name, price ).getLineItem() );
     }
 
 
