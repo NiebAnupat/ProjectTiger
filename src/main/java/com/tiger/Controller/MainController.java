@@ -44,11 +44,6 @@ public class MainController implements Initializable {
     private Button btnRoom;
 
     @FXML
-    void onbtnCafe(ActionEvent event) {
-        loadPage("cafe");
-    }
-
-    @FXML
     void onbtnReg(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("register.fxml"));
         Scene scene = new Scene(root);
@@ -57,6 +52,11 @@ public class MainController implements Initializable {
         popup.initStyle(StageStyle.TRANSPARENT);
         popup.setScene(scene);
         popup.show();
+    }
+
+    @FXML
+    void onbtnCafe(ActionEvent event) {
+        loadPage("cafe");
     }
 
     @FXML

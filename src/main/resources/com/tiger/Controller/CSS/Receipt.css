@@ -1,0 +1,15 @@
+.root {
+    -fx-app-background: #FFF;
+    -fx-background-color: -fx-app-background;
+}
+
+.right-page-turn {
+    -fx-rotate: 3;
+    -fx-translate-y: -2;
+    -fx-background-color: -fx-app-background;
+    -fx-effect: dropshadow(three-pass-box, #323232, 10, 0, 0, 15);
+}
+
+.content-pane {
+    -fx-background-color: #FFF;
+}

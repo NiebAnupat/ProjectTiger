@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -22,105 +23,210 @@
             <Font name="Noto Sans Thai Bold" size="14.0" />
          </font>
       </Button>
-      <Pane layoutX="22.0" layoutY="96.0" prefHeight="382.0" prefWidth="278.0" style="-fx-background-color: #DDDDDD; -fx-background-radius: 5;">
+      <Pane layoutX="22.0" layoutY="96.0" prefHeight="382.0" prefWidth="278.0" style="-fx-background-color: #FFF; -fx-border-color: #DDD; -fx-border-radius: 5;">
          <children>
-            <VBox prefHeight="382.0" prefWidth="278.0">
+            <HBox layoutY="-2.0" prefHeight="42.0" prefWidth="278.0">
                <children>
-                  <CheckBox fx:id="hotMilk" mnemonicParsing="false" prefHeight="42.0" prefWidth="295.0" stylesheets="@CSS/Checkbox.css" text="นมร้อน" userData="25">
+                  <Label alignment="CENTER" prefHeight="42.0" prefWidth="177.0" text="รายการ">
                      <font>
-                        <Font name="Noto Sans Thai Regular" size="14.0" />
+                        <Font name="Noto Sans Thai Bold" size="14.0" />
                      </font>
-                     <padding>
-                        <Insets left="15.0" />
-                     </padding>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </CheckBox>
-                  <CheckBox fx:id="coldMilk" mnemonicParsing="false" prefHeight="42.0" prefWidth="295.0" stylesheets="@CSS/Checkbox.css" text="นมเย็น                                       30 .-">
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="42.0" prefWidth="112.0" text="ราคา">
                      <font>
-                        <Font name="Noto Sans Thai Regular" size="14.0" />
+                        <Font name="Noto Sans Thai Bold" size="14.0" />
                      </font>
-                     <padding>
-                        <Insets left="15.0" />
-                     </padding>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </CheckBox>
-                  <CheckBox fx:id="fabpeMilkss" mnemonicParsing="false" prefHeight="42.0" prefWidth="295.0" stylesheets="@CSS/Checkbox.css" text="นมปั่น                                        35 .-">
-                     <font>
-                        <Font name="Noto Sans Thai Regular" size="14.0" />
-                     </font>
-                     <padding>
-                        <Insets left="15.0" />
-                     </padding>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </CheckBox>
-                  <CheckBox fx:id="hotCoffee" mnemonicParsing="false" prefHeight="42.0" prefWidth="295.0" stylesheets="@CSS/Checkbox.css" text="กาแฟร้อน                                  30 .-">
-                     <font>
-                        <Font name="Noto Sans Thai Regular" size="14.0" />
-                     </font>
-                     <padding>
-                        <Insets left="15.0" />
-                     </padding>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </CheckBox>
-                  <CheckBox fx:id="coldCoffee" mnemonicParsing="false" prefHeight="42.0" prefWidth="295.0" stylesheets="@CSS/Checkbox.css" text="กาแฟเย็น                                   35 .-">
-                     <font>
-                        <Font name="Noto Sans Thai Regular" size="14.0" />
-                     </font>
-                     <padding>
-                        <Insets left="15.0" />
-                     </padding>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </CheckBox>
-                  <CheckBox fx:id="juice" mnemonicParsing="false" prefHeight="42.0" prefWidth="295.0" stylesheets="@CSS/Checkbox.css" text="น้ำผลไม้                                     30 .-">
-                     <font>
-                        <Font name="Noto Sans Thai Regular" size="14.0" />
-                     </font>
-                     <padding>
-                        <Insets left="15.0" />
-                     </padding>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </CheckBox>
-                  <CheckBox fx:id="cake" mnemonicParsing="false" prefHeight="42.0" prefWidth="295.0" stylesheets="@CSS/Checkbox.css" text="เค้ก                                           35 .-">
-                     <font>
-                        <Font name="Noto Sans Thai Regular" size="14.0" />
-                     </font>
-                     <padding>
-                        <Insets left="15.0" />
-                     </padding>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </CheckBox>
-                  <CheckBox fx:id="brownie" mnemonicParsing="false" prefHeight="42.0" prefWidth="295.0" stylesheets="@CSS/Checkbox.css" text="บราวนี่                                       25 .-">
-                     <font>
-                        <Font name="Noto Sans Thai Regular" size="14.0" />
-                     </font>
-                     <padding>
-                        <Insets left="15.0" />
-                     </padding>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </CheckBox>
+                  </Label>
+               </children>
+            </HBox>
+            <VBox layoutY="37.0" prefHeight="345.0" prefWidth="278.0">
+               <children>
+                  <HBox>
+                     <children>
+                        <CheckBox fx:id="hotMilk" mnemonicParsing="false" prefHeight="42.0" prefWidth="186.0" stylesheets="@CSS/Checkbox.css" text="นมร้อน" userData="25">
+                           <font>
+                              <Font name="Noto Sans Thai Regular" size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets left="15.0" />
+                           </padding>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </CheckBox>
+                        <Label alignment="CENTER" prefHeight="41.0" prefWidth="114.0" text="25 .-">
+                           <font>
+                              <Font name="Noto Sans Thai Regular" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <CheckBox fx:id="coldMilk" mnemonicParsing="false" prefHeight="42.0" prefWidth="186.0" stylesheets="@CSS/Checkbox.css" text="นมเย็น">
+                           <font>
+                              <Font name="Noto Sans Thai Regular" size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets left="15.0" />
+                           </padding>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </CheckBox>
+                        <Label alignment="CENTER" prefHeight="41.0" prefWidth="114.0" text="30 .-">
+                           <font>
+                              <Font name="Noto Sans Thai Regular" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <CheckBox fx:id="fabpeMilkss" mnemonicParsing="false" prefHeight="42.0" prefWidth="186.0" stylesheets="@CSS/Checkbox.css" text="นมปั่น">
+                           <font>
+                              <Font name="Noto Sans Thai Regular" size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets left="15.0" />
+                           </padding>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </CheckBox>
+                        <Label alignment="CENTER" prefHeight="41.0" prefWidth="114.0" text="35 .-">
+                           <font>
+                              <Font name="Noto Sans Thai Regular" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <CheckBox fx:id="hotCoffee" mnemonicParsing="false" prefHeight="42.0" prefWidth="186.0" stylesheets="@CSS/Checkbox.css" text="กาแฟร้อน">
+                           <font>
+                              <Font name="Noto Sans Thai Regular" size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets left="15.0" />
+                           </padding>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </CheckBox>
+                        <Label alignment="CENTER" prefHeight="41.0" prefWidth="114.0" text="30 .-">
+                           <font>
+                              <Font name="Noto Sans Thai Regular" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <CheckBox fx:id="coldCoffee" mnemonicParsing="false" prefHeight="42.0" prefWidth="186.0" stylesheets="@CSS/Checkbox.css" text="กาแฟเย็น">
+                           <font>
+                              <Font name="Noto Sans Thai Regular" size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets left="15.0" />
+                           </padding>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </CheckBox>
+                        <Label alignment="CENTER" prefHeight="41.0" prefWidth="114.0" text="35 .-">
+                           <font>
+                              <Font name="Noto Sans Thai Regular" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <CheckBox fx:id="juice" mnemonicParsing="false" prefHeight="42.0" prefWidth="186.0" stylesheets="@CSS/Checkbox.css" text="น้ำผลไม้">
+                           <font>
+                              <Font name="Noto Sans Thai Regular" size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets left="15.0" />
+                           </padding>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </CheckBox>
+                        <Label alignment="CENTER" prefHeight="41.0" prefWidth="114.0" text="30 .-">
+                           <font>
+                              <Font name="Noto Sans Thai Regular" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <CheckBox fx:id="cake" mnemonicParsing="false" prefHeight="42.0" prefWidth="186.0" stylesheets="@CSS/Checkbox.css" text="เค้ก">
+                           <font>
+                              <Font name="Noto Sans Thai Regular" size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets left="15.0" />
+                           </padding>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </CheckBox>
+                        <Label alignment="CENTER" prefHeight="41.0" prefWidth="114.0" text="35 .-">
+                           <font>
+                              <Font name="Noto Sans Thai Regular" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <CheckBox fx:id="brownie" mnemonicParsing="false" prefHeight="42.0" prefWidth="186.0" stylesheets="@CSS/Checkbox.css" text="บราวนี่">
+                           <font>
+                              <Font name="Noto Sans Thai Regular" size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets left="15.0" />
+                           </padding>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </CheckBox>
+                        <Label alignment="CENTER" prefHeight="41.0" prefWidth="114.0" text="25 .-">
+                           <font>
+                              <Font name="Noto Sans Thai Regular" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </children>
       </Pane>
-      <Pane layoutX="319.0" layoutY="96.0" prefHeight="382.0" prefWidth="278.0" style="-fx-background-color: #DDDDDD; -fx-background-radius: 5;">
+      <Pane layoutX="319.0" layoutY="96.0" prefHeight="382.0" prefWidth="278.0" style="-fx-background-color: #FFF; -fx-border-color: #DDD; -fx-border-radius: 5;">
          <children>
-            <ListView fx:id="menuList" prefHeight="382.0" prefWidth="278.0" style="-fx-background-radius: 5; -fx-background-color: #DDDDDD;" />
+            <HBox prefHeight="42.0" prefWidth="278.0">
+               <children>
+                  <Label alignment="CENTER" prefHeight="42.0" prefWidth="100.0" text="รายการ">
+                     <font>
+                        <Font name="Noto Sans Thai Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="42.0" prefWidth="98.0" text="    ราคา">
+                     <font>
+                        <Font name="Noto Sans Thai Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" prefHeight="42.0" prefWidth="80.0" text="จำนวน">
+                     <font>
+                        <Font name="Noto Sans Thai Bold" size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <ListView fx:id="menuList" layoutX="4.0" layoutY="36.0" prefHeight="345.0" prefWidth="270.0" style="-fx-background-radius: 5; -fx-background-color: #FFF;" />
          </children>
       </Pane>
    </children>
