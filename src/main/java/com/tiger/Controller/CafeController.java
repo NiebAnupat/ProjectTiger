@@ -28,8 +28,6 @@ public class CafeController implements Initializable {
     @FXML
     private ScrollPane txtOrder;
 
-
-
     @FXML
     private CheckBox cake;
 
@@ -62,10 +60,7 @@ public class CafeController implements Initializable {
 
     @Override
     public void initialize (URL url, ResourceBundle resourceBundle) {
-
         //        menuList = new HBox();
-
-
         hotMilk.setOnAction( event -> {
             if ( hotMilk.isSelected() ) {
                 menuName = hotMilk.getText();
