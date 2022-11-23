@@ -55,8 +55,7 @@ public class CafeController implements Initializable {
     @FXML
     private CheckBox brownie;
 
-    @FXML
-    private VBox menuList;
+    private ListView<?> menuList;
 
     private String menuName;
     private double menuPrice;
@@ -94,8 +93,10 @@ public class CafeController implements Initializable {
 
     public void addMenu (String name, double price) throws IOException {
 //        LineItemControl lineItem = new LineItemControl( name,price );
-        menuList.getChildren().add( new LineItemControl( name,price ).getLineItem());
+//        menuList.getChildren().add( new LineItemControl( name,price ).getLineItem());
 //        menuList.getChildren().add( lineItem );
+
+//        menuList.setItems();
     }
 
 
