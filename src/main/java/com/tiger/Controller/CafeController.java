@@ -1,6 +1,7 @@
 package com.tiger.Controller;
 
 import com.tiger.CustomControl.LineItemControl;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,13 +21,10 @@ import java.util.ResourceBundle;
 public class CafeController implements Initializable {
 
     @FXML
+    private CheckBox brownie;
+
+    @FXML
     private Button btnNext;
-
-    @FXML
-    private ScrollPane txtMenu;
-
-    @FXML
-    private ScrollPane txtOrder;
 
     @FXML
     private CheckBox cake;
@@ -38,19 +36,16 @@ public class CafeController implements Initializable {
     private CheckBox coldMilk;
 
     @FXML
-    private CheckBox fabpeMilkss;
+    private CheckBox fabpeMilk;
 
     @FXML
     private CheckBox hotCoffee;
 
     @FXML
-    private CheckBox hotMilk;
+    private HBox hotMilk;
 
     @FXML
     private CheckBox juice;
-
-    @FXML
-    private CheckBox brownie;
 
     @FXML
     private ListView<HBox> menuList;
@@ -61,17 +56,36 @@ public class CafeController implements Initializable {
     @Override
     public void initialize (URL url, ResourceBundle resourceBundle) {
         //        menuList = new HBox();
-        hotMilk.setOnAction( event -> {
-            if ( hotMilk.isSelected() ) {
-                menuName = hotMilk.getText();
-                menuPrice = 25;
-                try {
-                    addMenu( menuName, menuPrice );
-                } catch (IOException e) {
-                    throw new RuntimeException( e );
-                }
+        //        hotMilk.setOnAction( event -> {
+        //            setMenuEvent(event);
+        //        } );
+    }
+
+    public void setMenuEvent (ActionEvent event) throws IOException {
+        Object obj = event.getSource();
+        if ( obj instanceof CheckBox ) {
+            CheckBox cb = (CheckBox) obj;
+            menuName = cb.getText();
+            switch (menuName){
+                case "นมร้อน" -> menuPrice = 25;
+                case "นมเย็น" -> menuPrice = 30;
+                case "นมปั่น" -> menuPrice = 35;
+                case "กาแฟร้อน" -> menuPrice = 30;
+                case "กาแฟเย็น" -> menuPrice = 35;
+                case "น้ำผลไม้" -> menuPrice = 30;
+                case "เค้ก" -> menuPrice = 35;
+                case "บราวนี่" -> menuPrice = 25;
+                default -> menuPrice = 0;
             }
-        } );
+            if ( cb.isSelected() ) {
+                addMenu( menuName, menuPrice );
+            } else {
+                removeMenu( menuName, menuPrice );
+            }
+        } else {
+            throw new RuntimeException( "Not CheckBox" );
+        }
+
     }
 
     @FXML
@@ -85,13 +99,20 @@ public class CafeController implements Initializable {
         popup.show();
     }
 
-    public void addMenu (String name, int price) throws IOException {
-        //        LineItemControl lineItem = new LineItemControl( name,price );
-        //        menuList.getChildren().add( new LineItemControl( name,price ).getLineItem());
-        //        menuList.getChildren().add( lineItem );
-        //        menuList.setItems();
+    private void addMenu (String name, int price) throws IOException {
         menuList.getItems().add( new LineItemControl( name, price ).getLineItem() );
     }
 
+    private void removeMenu (String name, int price) throws IOException {
+        ObservableList<HBox> items = menuList.getItems();
+        // remove item from list where name match
+        for ( HBox item : items ) {
+            if ( item.getChildren().get( 0 ).toString().contains( name ) ) {
+                items.remove( item );
+                System.out.println( "Removed : " + name );
+                break;
+            }
+        }
+    }
 
 }

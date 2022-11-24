@@ -41,9 +41,9 @@
             </HBox>
             <VBox layoutY="37.0" prefHeight="345.0" prefWidth="278.0">
                <children>
-                  <HBox>
+                  <HBox fx:id="hotMilk" onMouseClicked="#setMenuEvent">
                      <children>
-                        <CheckBox fx:id="hotMilk" mnemonicParsing="false" prefHeight="42.0" prefWidth="186.0" stylesheets="@CSS/Checkbox.css" text="นมร้อน" userData="25">
+                        <CheckBox mnemonicParsing="false" onAction="#setMenuEvent" prefHeight="42.0" prefWidth="186.0" stylesheets="@CSS/Checkbox.css" text="นมร้อน" userData="25">
                            <font>
                               <Font name="Noto Sans Thai Regular" size="14.0" />
                            </font>
@@ -63,7 +63,7 @@
                   </HBox>
                   <HBox>
                      <children>
-                        <CheckBox fx:id="coldMilk" mnemonicParsing="false" prefHeight="42.0" prefWidth="186.0" stylesheets="@CSS/Checkbox.css" text="นมเย็น">
+                        <CheckBox fx:id="coldMilk" mnemonicParsing="false" onAction="#setMenuEvent" prefHeight="42.0" prefWidth="186.0" stylesheets="@CSS/Checkbox.css" text="นมเย็น">
                            <font>
                               <Font name="Noto Sans Thai Regular" size="14.0" />
                            </font>
@@ -83,7 +83,7 @@
                   </HBox>
                   <HBox>
                      <children>
-                        <CheckBox fx:id="fabpeMilkss" mnemonicParsing="false" prefHeight="42.0" prefWidth="186.0" stylesheets="@CSS/Checkbox.css" text="นมปั่น">
+                        <CheckBox fx:id="fabpeMilk" mnemonicParsing="false" onAction="#setMenuEvent" prefHeight="42.0" prefWidth="186.0" stylesheets="@CSS/Checkbox.css" text="นมปั่น">
                            <font>
                               <Font name="Noto Sans Thai Regular" size="14.0" />
                            </font>
@@ -103,7 +103,7 @@
                   </HBox>
                   <HBox>
                      <children>
-                        <CheckBox fx:id="hotCoffee" mnemonicParsing="false" prefHeight="42.0" prefWidth="186.0" stylesheets="@CSS/Checkbox.css" text="กาแฟร้อน">
+                        <CheckBox fx:id="hotCoffee" mnemonicParsing="false" onAction="#setMenuEvent" prefHeight="42.0" prefWidth="186.0" stylesheets="@CSS/Checkbox.css" text="กาแฟร้อน">
                            <font>
                               <Font name="Noto Sans Thai Regular" size="14.0" />
                            </font>
@@ -123,7 +123,7 @@
                   </HBox>
                   <HBox>
                      <children>
-                        <CheckBox fx:id="coldCoffee" mnemonicParsing="false" prefHeight="42.0" prefWidth="186.0" stylesheets="@CSS/Checkbox.css" text="กาแฟเย็น">
+                        <CheckBox fx:id="coldCoffee" mnemonicParsing="false" onAction="#setMenuEvent" prefHeight="42.0" prefWidth="186.0" stylesheets="@CSS/Checkbox.css" text="กาแฟเย็น">
                            <font>
                               <Font name="Noto Sans Thai Regular" size="14.0" />
                            </font>
@@ -143,7 +143,7 @@
                   </HBox>
                   <HBox>
                      <children>
-                        <CheckBox fx:id="juice" mnemonicParsing="false" prefHeight="42.0" prefWidth="186.0" stylesheets="@CSS/Checkbox.css" text="น้ำผลไม้">
+                        <CheckBox fx:id="juice" mnemonicParsing="false" onAction="#setMenuEvent" prefHeight="42.0" prefWidth="186.0" stylesheets="@CSS/Checkbox.css" text="น้ำผลไม้">
                            <font>
                               <Font name="Noto Sans Thai Regular" size="14.0" />
                            </font>
@@ -163,7 +163,7 @@
                   </HBox>
                   <HBox>
                      <children>
-                        <CheckBox fx:id="cake" mnemonicParsing="false" prefHeight="42.0" prefWidth="186.0" stylesheets="@CSS/Checkbox.css" text="เค้ก">
+                        <CheckBox fx:id="cake" mnemonicParsing="false" onAction="#setMenuEvent" prefHeight="42.0" prefWidth="186.0" stylesheets="@CSS/Checkbox.css" text="เค้ก">
                            <font>
                               <Font name="Noto Sans Thai Regular" size="14.0" />
                            </font>
@@ -183,7 +183,7 @@
                   </HBox>
                   <HBox>
                      <children>
-                        <CheckBox fx:id="brownie" mnemonicParsing="false" prefHeight="42.0" prefWidth="186.0" stylesheets="@CSS/Checkbox.css" text="บราวนี่">
+                        <CheckBox fx:id="brownie" mnemonicParsing="false" onAction="#setMenuEvent" prefHeight="42.0" prefWidth="186.0" stylesheets="@CSS/Checkbox.css" text="บราวนี่">
                            <font>
                               <Font name="Noto Sans Thai Regular" size="14.0" />
                            </font>
@@ -214,7 +214,7 @@
                         <Font name="Noto Sans Thai Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label alignment="CENTER" prefHeight="42.0" prefWidth="98.0" text="    ราคา">
+                  <Label alignment="CENTER" prefHeight="42.0" prefWidth="98.0" text="ราคา/หน่วย">
                      <font>
                         <Font name="Noto Sans Thai Bold" size="14.0" />
                      </font>
@@ -226,7 +226,10 @@
                   </Label>
                </children>
             </HBox>
-            <ListView fx:id="menuList" layoutX="4.0" layoutY="36.0" prefHeight="345.0" prefWidth="270.0" style="-fx-background-radius: 5; -fx-background-color: #FFF;" />
+            <ListView fx:id="menuList" layoutX="4.0" layoutY="36.0" prefHeight="345.0" prefWidth="270.0" style="-fx-background-radius: 5; -fx-background-color: #FFF;">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding></ListView>
          </children>
       </Pane>
    </children>
