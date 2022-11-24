@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.dlsc.gemsfx.TimePicker?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
@@ -74,8 +75,6 @@
                   <Font name="Noto Sans Thai Regular" size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="txtBook" layoutX="172.0" layoutY="406.0" prefHeight="34.0" prefWidth="151.0" />
-            <TextField fx:id="txtReturn" layoutX="424.0" layoutY="405.0" prefHeight="34.0" prefWidth="151.0" />
             <Button fx:id="btnCheck" layoutX="383.0" layoutY="333.0" mnemonicParsing="false" onAction="#onbtnCheck" prefHeight="23.0" prefWidth="62.0" style="-fx-background-color: #000;" text="ตรวจสอบ" textFill="WHITE">
                <font>
                   <Font name="Noto Sans Thai Bold" size="10.0" />
@@ -86,6 +85,9 @@
                   <Font name="Noto Sans Thai Regular" size="10.0" />
                </font>
             </Label>
+            <TimePicker fx:id="timeBook" layoutX="176.0" layoutY="411.0" />
+            <TimePicker fx:id="timeReturn" layoutX="424.0" layoutY="411.0" />
+           
          </children>
       </Pane>
    </children>
