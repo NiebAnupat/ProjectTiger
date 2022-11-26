@@ -39,7 +39,7 @@
                   </Label>
                </children>
             </HBox>
-            <VBox layoutY="37.0" prefHeight="345.0" prefWidth="278.0">
+            <VBox fx:id="checkBoxGroup" layoutY="37.0" prefHeight="345.0" prefWidth="278.0">
                <children>
                   <HBox fx:id="hotMilk" onMouseClicked="#setMenuEvent">
                      <children>
@@ -242,7 +242,7 @@
             <Font name="Noto Sans Thai Regular" size="16.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="398.0" layoutY="505.0" prefHeight="26.0" prefWidth="80.0" text="##,###" textAlignment="CENTER">
+      <Label fx:id="subTotal" alignment="CENTER" contentDisplay="CENTER" layoutX="398.0" layoutY="505.0" prefHeight="26.0" prefWidth="80.0" text="##,###" textAlignment="CENTER">
          <font>
             <Font name="Noto Sans Thai Regular" size="16.0" />
          </font>

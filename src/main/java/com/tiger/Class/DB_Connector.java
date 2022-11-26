@@ -24,8 +24,11 @@ public class DB_Connector {
     public void connectDB() throws SQLException {
         try{
             conn = DriverManager.getConnection(url,username,password);
+//            System.out.println("Connected to Database");
         }catch (SQLException ex){
             System.out.println(ex.getMessage());
+            myAlert alert = new myAlert();
+            alert.showErrorAlert("ไม่สามารถเชื่อมต่อฐานข้อมูลได้");
         }
     }
     // ----------------------------------------------
@@ -56,11 +59,11 @@ public class DB_Connector {
             st.execute(query);
             rs = true;
             disconnect();
+//            System.out.println("Execute Success");
         }catch (SQLException ex){
             rs = false;
             System.out.println(ex.getMessage());
         }
-
         return rs;
     }
     // ------------------------------------------------------------
@@ -71,7 +74,7 @@ public class DB_Connector {
             connectDB();
             st = conn.createStatement();
             rs = st.executeQuery(query);
-
+//            System.out.println("Get ResultSet Success");
         }catch (SQLException ex){
             rs = null;
             System.out.println(ex.getMessage());

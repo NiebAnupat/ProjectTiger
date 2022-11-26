@@ -81,10 +81,13 @@ public class Room {
             case "INDIVIDUAL" -> roomType = "3";
         }
 
-//        String sql = "SELECT * FROM room WHERE roomType = ? AND reserved = 1 LIMIT 1";
         String sql = String.format("SELECT * FROM room WHERE roomType = %s AND reserved = 1 LIMIT 1", roomType);
         try {
-            return new DB_Connector().getResultSet( sql ).next();
+            if (new DB_Connector().getResultSet( sql ).next()) {
+                return true;
+            }else {
+                return false;
+            }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
             return false;

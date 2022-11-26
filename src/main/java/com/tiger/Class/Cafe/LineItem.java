@@ -3,10 +3,10 @@ package com.tiger.Class.Cafe;
 public class LineItem {
     private Menu menu;
     private int quantity;
-    private double price;
-    private double subtotal;
+    private int price;
+    private int subtotal;
 
-    public LineItem(Menu menu, int quantity, double price) {
+    public LineItem(Menu menu, int quantity, int price) {
         this.menu = menu;
         this.quantity = quantity;
         this.price = price;
@@ -33,15 +33,15 @@ public class LineItem {
         return price;
     }
 
-    public void setPrice (double price) {
+    public void setPrice (int price) {
         this.price = price;
     }
 
-    public double getSubtotal () {
+    public int getSubtotal () {
         return subtotal;
     }
 
-    public void setSubtotal (double total) {
+    public void setSubtotal (int total) {
         this.subtotal = total;
     }
 }

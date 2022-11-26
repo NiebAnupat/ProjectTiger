@@ -1,6 +1,7 @@
 package com.tiger.Class.Room;
 
 import com.tiger.Class.Invoice;
+import com.tiger.Class.InvoiceType;
 
 import java.util.Date;
 
@@ -22,5 +23,15 @@ public class Invoice_Member extends Invoice {
 
     public void setCustomer (Customer customer) {
         this.customer = customer;
+    }
+
+    @Override
+    public InvoiceType getInvoiceType() {
+        return InvoiceType.MEMBER;
+    }
+
+    @Override
+    public boolean submit() {
+        return false;
     }
 }

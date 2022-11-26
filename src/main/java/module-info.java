@@ -7,5 +7,7 @@ module com.tiger.tiger {
 
 
     opens com.tiger.Controller to javafx.fxml;
+    opens com.tiger.CustomControl to javafx.fxml;
     exports com.tiger.Controller;
+    exports com.tiger.CustomControl;
 }

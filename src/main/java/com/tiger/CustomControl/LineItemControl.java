@@ -8,10 +8,12 @@ import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 
-public class LineItemControl {
+public class LineItemControl extends HBox {
 
     private String itemName;
     private int itemPrice;
+
+
 
     public LineItemControl (String itemName, int itemPrice) {
         this.itemName = itemName;
@@ -60,5 +62,14 @@ public class LineItemControl {
     public HBox getLineItem () {
         return generateLineItem();
     }
+
+    public String getMenuName() {
+        return itemName;
+    }
+
+    public int getMenuPrice() {
+        return itemPrice;
+    }
+
 
 }

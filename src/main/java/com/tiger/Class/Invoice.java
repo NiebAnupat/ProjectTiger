@@ -1,20 +1,22 @@
 package com.tiger.Class;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
 
-public class Invoice {
+public abstract class Invoice {
     private String invoiceID;
     private Date date;
     private double subTotal, total;
-    private final double TAX = 0.7;
-
+    private final double TAX = 0.07;
 
 
     private boolean isCreated = false;
 
     public Invoice (Date date) {
-        this.invoiceID = UUID.randomUUID().toString();
+        this.invoiceID = this.getIdFromDatabase();
         this.date = date;
     }
 
@@ -61,4 +63,49 @@ public class Invoice {
     public void setCreated (boolean created) {
         isCreated = created;
     }
+
+    abstract public InvoiceType getInvoiceType();
+
+    public double getTax() {
+        return (subTotal * TAX);
+    }
+
+    public String getDateWithFormat() {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        return formatter.format(date);
+    }
+
+    public java.sql.Date getSqlDate() {
+        return new java.sql.Date(date.getTime());
+    }
+
+    public String getTimeWithFormat() {
+        SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
+        return formatter.format(date);
+    }
+
+    private String getIdFromDatabase() {
+        int lastId = 0;
+        String sql = "SELECT inv_id FROM invoice ORDER BY inv_id DESC LIMIT 1";
+        try {
+        ResultSet rs = new DB_Connector().getResultSet(sql);
+             if(rs.next()){
+                 lastId = rs.getInt("inv_id");
+             }else {
+                 lastId = 0;
+             }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            lastId = -1;
+        }
+        if (lastId == -1) {
+            return null;
+        }
+        lastId++;
+        return String.format("%05d", lastId);
+    }
+
+    abstract public boolean submit();
+
+
 }

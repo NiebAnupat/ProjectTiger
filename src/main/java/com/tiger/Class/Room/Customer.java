@@ -13,7 +13,6 @@ public class Customer {
 
     public Customer (String phoneNum) {
         this.phoneNum = phoneNum;
-
         // Check if the customer is a member
         String sql = String.format( "SELECT * FROM customer WHERE phoneNum = '%s'", phoneNum );
         try {
@@ -43,11 +42,9 @@ public class Customer {
         isMember = member;
     }
 
-    public void reserveRoom (Room room, Date startTime, Date endTime) {
+    public void reserveRoom (Room room, double hour) {
 
         if ( room.setReserved( true ) ) {
-            // calculate hour
-            double hour = ( endTime.getTime() - startTime.getTime() ) / 3600000;
             // create new invoice room
             Invoice invoice = new Invoice_Room( new Date(), this, room, hour );
             if ( invoice.isCreated() ) {

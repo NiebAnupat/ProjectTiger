@@ -2,6 +2,7 @@ package com.tiger.Class.Room;
 
 import com.tiger.Class.DB_Connector;
 import com.tiger.Class.Invoice;
+import com.tiger.Class.InvoiceType;
 
 import java.sql.SQLException;
 import java.util.Date;
@@ -20,22 +21,7 @@ public class Invoice_Room extends Invoice {
         double subTotal = room.getPrice() * hour;
         setSubTotal( subTotal );
         setTotal();
-
-        // save to database
-        String sql = "INSERT INTO invoice_room (invoiceID, date,customerID, roomID, hour, totalPrice,) VALUES ('%s','%s','%s','%s','%s','%s')";
-        sql = String.format( sql, getInvoiceID(), ( new java.sql.Date( getDate().getTime() ) ), customer.getPhoneNum(), room.getTypeID(), hour, getTotal() );
-        try {
-            if ( new DB_Connector().execute( sql ) ) {
-                System.out.println( "Invoice Room created" );
-                this.setCreated( true );
             }
-            else System.out.println( "Invoice Room failed" );
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-
-    }
 
     public Customer getCustomer () {
         return customer;
@@ -60,4 +46,32 @@ public class Invoice_Room extends Invoice {
     public void setHour (double hour) {
         this.hour = hour;
     }
+
+    public boolean submit () {
+        // save to database
+        String sql = "INSERT INTO invoice_room (invoiceID, date,customerID, roomID, hour, totalPrice,) VALUES ('%s','%s','%s','%s','%s','%s')";
+        sql = String.format( sql, getInvoiceID(), ( new java.sql.Date( getDate().getTime() ) ), customer.getPhoneNum(), room.getTypeID(), hour, getTotal() );
+        try {
+            if ( new DB_Connector().execute( sql ) ) {
+                System.out.println( "Invoice Room created" );
+                this.setCreated( true );
+                return true;
+            }
+            else {
+                System.out.println( "Invoice Room failed" );
+                return false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
+    public InvoiceType getInvoiceType() {
+        return InvoiceType.ROOM;
+    }
+
+
+
 }
