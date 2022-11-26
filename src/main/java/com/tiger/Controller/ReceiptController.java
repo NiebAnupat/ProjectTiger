@@ -4,6 +4,7 @@ import com.tiger.Class.Cafe.Invoice_Cafe;
 import com.tiger.Class.Cafe.LineItem;
 import com.tiger.Class.Invoice;
 import com.tiger.Class.InvoiceType;
+import com.tiger.Class.Room.Invoice_Member;
 import com.tiger.Class.myAlert;
 import com.tiger.CustomControl.LineReceiptControl;
 import javafx.event.ActionEvent;
@@ -82,7 +83,7 @@ public class ReceiptController implements Initializable {
     }
 
     private void setTax() {
-        double taxValue = invoice.getTax();
+        double taxValue = invoice.getVat();
         Tax.setText(String.format("%.2f", taxValue));
     }
 
@@ -104,7 +105,7 @@ public class ReceiptController implements Initializable {
         switch (invoiceType) {
             case CAFE -> RecName.setText("ใบเสร็จรับเงินร้านคาเฟ่");
             case ROOM -> RecName.setText("ใบเสร็จรับเงิน Co-Working Space");
-            case MEMBER -> RecName.setText("ใบเสร็จรับเงินรสมัครสมาชิก");
+            case MEMBER -> RecName.setText("ใบเสร็จรับเงินระบบสมัครสมาชิก");
         }
     }
 
@@ -125,6 +126,12 @@ public class ReceiptController implements Initializable {
                 case ROOM -> {
                 }
                 case MEMBER -> {
+                    Invoice_Member invoice_member = (Invoice_Member) invoice;
+                    LineReceiptControl lineReceiptControl = new LineReceiptControl();
+                    lineReceiptControl.setListName(invoice_member.getItemName());
+                    lineReceiptControl.setListUnt(1);
+                    lineReceiptControl.setListPrice(invoice_member.getItemPrice());
+                    List.getItems().add(lineReceiptControl);
                 }
             }
         } catch (Exception e) {

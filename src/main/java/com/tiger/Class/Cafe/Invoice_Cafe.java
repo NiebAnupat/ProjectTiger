@@ -10,7 +10,7 @@ import java.util.Date;
 public class Invoice_Cafe extends Invoice {
     private LineItem item[];
 
-    public Invoice_Cafe(String invoiceID, Date date, LineItem item[]) {
+    public Invoice_Cafe( Date date, LineItem item[]) {
         super(date);
         this.item = item;
 
@@ -68,7 +68,7 @@ public class Invoice_Cafe extends Invoice {
                 return false;
             }
 
-            sql = String.format("insert into invoice(inv_type,inv_vat,inv_total,inv_date) values('%d','%.2f','%.2f','%s')",invoiceType,getTax(),getTotal(),getSqlDate());
+            sql = String.format("insert into invoice(inv_type,inv_vat,inv_total,inv_date) values('%d','%.2f','%.2f','%s')",invoiceType,getVat(),getTotal(),getSqlDate());
             if (!db.execute(sql))return false;
 
             sql = "select inv_id from invoice order by inv_id desc limit 1";

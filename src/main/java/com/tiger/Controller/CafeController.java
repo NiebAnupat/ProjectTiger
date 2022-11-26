@@ -94,7 +94,7 @@ public class CafeController implements Initializable {
             int menuAmount = menuSpinner.getValue();
             lineItems[i] = new LineItem(menu, menuAmount, Integer.parseInt(menuPrice.getText()));
         }
-        Invoice_Cafe invoice = new Invoice_Cafe(UUID.randomUUID().toString(), new Date(), lineItems);
+        Invoice_Cafe invoice = new Invoice_Cafe( new Date(), lineItems);
 
         // load next page
         FXMLLoader loader = new FXMLLoader(getClass().getResource("receipt.fxml"));

@@ -66,7 +66,7 @@ public abstract class Invoice {
 
     abstract public InvoiceType getInvoiceType();
 
-    public double getTax() {
+    public double getVat() {
         return (subTotal * TAX);
     }
 
@@ -75,8 +75,9 @@ public abstract class Invoice {
         return formatter.format(date);
     }
 
-    public java.sql.Date getSqlDate() {
-        return new java.sql.Date(date.getTime());
+    public String getSqlDate() {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return formatter.format(date);
     }
 
     public String getTimeWithFormat() {

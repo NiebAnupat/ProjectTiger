@@ -60,12 +60,12 @@
                   <Font name="Noto Sans Thai Regular" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="258.0" layoutY="255.0" text="บาท  ต่อ 3 ชั่วโมง">
+            <Label layoutX="258.0" layoutY="255.0" text="บาท / 3 ชั่วโมง">
                <font>
                   <Font name="Noto Sans Thai Regular" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="220.0" layoutY="255.0" text="40">
+            <Label fx:id="priceLabel" layoutX="220.0" layoutY="255.0" text="40">
                <font>
                   <Font name="Noto Sans Thai Regular" size="20.0" />
                </font>

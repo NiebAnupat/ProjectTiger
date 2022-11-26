@@ -11,51 +11,65 @@ public class Customer {
     private String phoneNum;
     private Boolean isMember;
 
-    public Customer (String phoneNum) {
+    public Customer(String phoneNum) {
         this.phoneNum = phoneNum;
         // Check if the customer is a member
-        String sql = String.format( "SELECT * FROM customer WHERE phoneNum = '%s'", phoneNum );
+        String sql = String.format("SELECT * FROM customers WHERE phoneNum = '%s'", phoneNum);
         try {
-            if ( new DB_Connector().getResultSet( sql ).next() ) {
+            if (new DB_Connector().getResultSet(sql).next()) {
                 isMember = true;
             } else {
                 isMember = false;
             }
         } catch (Exception e) {
-           new myAlert().showErrorAlert( "Error: " + e.getMessage() );
+            new myAlert().showErrorAlert("Error: " + e.getMessage());
         }
     }
 
-    public String getPhoneNum () {
+    public static boolean checkMemberId(String newValue) {
+        String sql = String.format("SELECT * FROM customers WHERE phoneNum = '%s'", newValue);
+        try {
+            if (new DB_Connector().getResultSet(sql).next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            new myAlert().showErrorAlert("Error: " + e.getMessage());
+            return false;
+        }
+    }
+
+    public String getPhoneNum() {
         return phoneNum;
     }
 
-    public void setPhoneNum (String phoneNum) {
+    public void setPhoneNum(String phoneNum) {
         this.phoneNum = phoneNum;
     }
 
-    public Boolean getMember () {
+    public Boolean getMember() {
         return isMember;
     }
 
-    public void setMember (Boolean member) {
+    public void setMember(Boolean member) {
         isMember = member;
     }
 
-    public void reserveRoom (Room room, double hour) {
+    public void reserveRoom(Room room, double hour) {
 
-        if ( room.setReserved( true ) ) {
+        if (room.setReserved(true)) {
             // create new invoice room
-            Invoice invoice = new Invoice_Room( new Date(), this, room, hour );
-            if ( invoice.isCreated() ) {
-                System.out.println( "Room reserved" );
+            Invoice invoice = new Invoice_Room(new Date(), this, room, hour);
+            if (invoice.isCreated()) {
+                System.out.println("Room reserved");
                 // show alert dialog
-               new myAlert().showInformationAlert( "การจองสำเร็จ" );
+                new myAlert().showInformationAlert("การจองสำเร็จ");
 
             } else {
-                System.out.println( "Room reservation failed" );
+                System.out.println("Room reservation failed");
                 // show alert dialog
-                new myAlert().showErrorAlert( "การจองล้มเหลว" );
+                new myAlert().showErrorAlert("การจองล้มเหลว");
             }
         }
 
