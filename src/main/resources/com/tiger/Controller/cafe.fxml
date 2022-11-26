@@ -13,14 +13,14 @@
 
 <AnchorPane prefHeight="550.0" prefWidth="622.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiger.Controller.CafeController">
    <children>
-      <Label layoutX="55.0" layoutY="46.0" text="รายการอาหาร / เครื่องดื่ม">
+      <Label layoutX="22.0" layoutY="36.0" text="รายการอาหาร / เครื่องดื่ม">
          <font>
-            <Font name="Noto Sans Thai Bold" size="20.0" />
+            <Font name="Noto Sans Thai Regular" size="23.0" />
          </font>
       </Label>
       <Button fx:id="btnNext" layoutX="545.0" layoutY="501.0" mnemonicParsing="false" onAction="#onbtnNext" prefHeight="34.0" prefWidth="62.0" style="-fx-background-color: #000;" text="ถัดไป" textFill="WHITE">
          <font>
-            <Font name="Noto Sans Thai Bold" size="14.0" />
+            <Font name="Noto Sans Thai Regular" size="14.0" />
          </font>
       </Button>
       <Pane layoutX="22.0" layoutY="96.0" prefHeight="382.0" prefWidth="278.0" style="-fx-background-color: #FFF; -fx-border-color: #DDD; -fx-border-radius: 5;">
@@ -29,12 +29,12 @@
                <children>
                   <Label alignment="CENTER" prefHeight="42.0" prefWidth="177.0" text="รายการ">
                      <font>
-                        <Font name="Noto Sans Thai Bold" size="14.0" />
+                        <Font name="Noto Sans Thai Regular" size="14.0" />
                      </font>
                   </Label>
                   <Label alignment="CENTER" prefHeight="42.0" prefWidth="112.0" text="ราคา">
                      <font>
-                        <Font name="Noto Sans Thai Bold" size="14.0" />
+                        <Font name="Noto Sans Thai Regular" size="14.0" />
                      </font>
                   </Label>
                </children>
@@ -211,17 +211,17 @@
                <children>
                   <Label alignment="CENTER" prefHeight="42.0" prefWidth="100.0" text="รายการ">
                      <font>
-                        <Font name="Noto Sans Thai Bold" size="14.0" />
+                        <Font name="Noto Sans Thai Regular" size="14.0" />
                      </font>
                   </Label>
                   <Label alignment="CENTER" prefHeight="42.0" prefWidth="98.0" text="ราคา/หน่วย">
                      <font>
-                        <Font name="Noto Sans Thai Bold" size="14.0" />
+                        <Font name="Noto Sans Thai Regular" size="14.0" />
                      </font>
                   </Label>
                   <Label alignment="CENTER" prefHeight="42.0" prefWidth="80.0" text="จำนวน">
                      <font>
-                        <Font name="Noto Sans Thai Bold" size="14.0" />
+                        <Font name="Noto Sans Thai Regular" size="14.0" />
                      </font>
                   </Label>
                </children>
@@ -232,5 +232,20 @@
                </padding></ListView>
          </children>
       </Pane>
+      <Label layoutX="319.0" layoutY="505.0" prefHeight="26.0" prefWidth="62.0" text="ราคารวม">
+         <font>
+            <Font name="Noto Sans Thai Regular" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="499.0" layoutY="505.0" text="บาท">
+         <font>
+            <Font name="Noto Sans Thai Regular" size="16.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="398.0" layoutY="505.0" prefHeight="26.0" prefWidth="80.0" text="##,###" textAlignment="CENTER">
+         <font>
+            <Font name="Noto Sans Thai Regular" size="16.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

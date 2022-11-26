@@ -8,7 +8,7 @@ public class Invoice_Cafe extends Invoice {
     private LineItem item[];
 
     public Invoice_Cafe(String invoiceID, Date date, LineItem item[]) {
-        super(invoiceID, date);
+        super( date);
         this.item = item;
 
         double subTotal = 0;
@@ -17,9 +17,7 @@ public class Invoice_Cafe extends Invoice {
         }
 
         setSubTotal(subTotal);
-
-        double total = (subTotal * getTAX()) + subTotal;
-        setTotal(total);
+        setTotal();
 
 
     }

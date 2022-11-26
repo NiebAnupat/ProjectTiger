@@ -8,14 +8,12 @@ public class Invoice_Member extends Invoice {
     private Customer customer;
 
     public Invoice_Member(String invoiceID, Date date, Customer customer) {
-        super(invoiceID, date);
+        super( date);
         this.customer = customer;
 
         double subTotal = 1500;
         setSubTotal(subTotal);
-
-        double total = (subTotal * getTAX()) + subTotal;
-        setTotal(total);
+        setTotal();
     }
 
     public Customer getCustomer () {

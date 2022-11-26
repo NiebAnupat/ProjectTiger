@@ -55,10 +55,7 @@ public class CafeController implements Initializable {
 
     @Override
     public void initialize (URL url, ResourceBundle resourceBundle) {
-        //        menuList = new HBox();
-        //        hotMilk.setOnAction( event -> {
-        //            setMenuEvent(event);
-        //        } );
+        // Statement...
     }
 
     public void setMenuEvent (ActionEvent event) throws IOException {
@@ -67,14 +64,9 @@ public class CafeController implements Initializable {
             CheckBox cb = (CheckBox) obj;
             menuName = cb.getText();
             switch (menuName){
-                case "นมร้อน" -> menuPrice = 25;
-                case "นมเย็น" -> menuPrice = 30;
-                case "นมปั่น" -> menuPrice = 35;
-                case "กาแฟร้อน" -> menuPrice = 30;
-                case "กาแฟเย็น" -> menuPrice = 35;
-                case "น้ำผลไม้" -> menuPrice = 30;
-                case "เค้ก" -> menuPrice = 35;
-                case "บราวนี่" -> menuPrice = 25;
+                case "นมร้อน", "บราวนี่" -> menuPrice = 25;
+                case "นมเย็น", "กาแฟร้อน", "น้ำผลไม้" -> menuPrice = 30;
+                case "นมปั่น", "กาแฟเย็น", "เค้ก" -> menuPrice = 35;
                 default -> menuPrice = 0;
             }
             if ( cb.isSelected() ) {

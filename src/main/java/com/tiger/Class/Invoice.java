@@ -1,6 +1,7 @@
 package com.tiger.Class;
 
 import java.util.Date;
+import java.util.UUID;
 
 public class Invoice {
     private String invoiceID;
@@ -8,11 +9,13 @@ public class Invoice {
     private double subTotal, total;
     private final double TAX = 0.7;
 
-    public Invoice(String invoiceID, Date date  ) {
-        this.invoiceID = invoiceID;
-        this.date = date;
 
-        this.total = total;
+
+    private boolean isCreated = false;
+
+    public Invoice (Date date) {
+        this.invoiceID = UUID.randomUUID().toString();
+        this.date = date;
     }
 
     public String getInvoiceID () {
@@ -43,11 +46,19 @@ public class Invoice {
         return total;
     }
 
-    public void setTotal (double total) {
-        this.total = subTotal * TAX;
+    public void setTotal () {
+        this.total = subTotal + ( subTotal * TAX );
     }
 
     public double getTAX () {
         return TAX;
+    }
+
+    public boolean isCreated () {
+        return isCreated;
+    }
+
+    public void setCreated (boolean created) {
+        isCreated = created;
     }
 }
