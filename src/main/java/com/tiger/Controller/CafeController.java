@@ -85,14 +85,26 @@ public class CafeController implements Initializable {
         // create array of LineItem from menuList
         ObservableList<HBox> menuListItems = menuList.getItems();
         LineItem lineItems[] = new LineItem[menuListItems.size()];
-        for (int i = 0; i < menuListItems.size(); i++) {
-            HBox line = menuListItems.get(i);
+//        for (int i = 0; i < menuListItems.size(); i++) {
+//            HBox line = menuListItems.get(i);
+//            Label menuName = (Label) line.getChildren().get(0);
+//            Label menuPrice = (Label) line.getChildren().get(1);
+//            Menu menu = new Menu(menuName.getText(), Integer.parseInt(menuPrice.getText()));
+//            Spinner<Integer> menuSpinner = (Spinner<Integer>) line.getChildren().get(2);
+//            int menuAmount = menuSpinner.getValue();
+//            lineItems[i] = new LineItem(menu, menuAmount, Integer.parseInt(menuPrice.getText()));
+//        }
+        // for each
+        int i = 0;
+        for (HBox line : menuListItems) {
             Label menuName = (Label) line.getChildren().get(0);
             Label menuPrice = (Label) line.getChildren().get(1);
             Menu menu = new Menu(menuName.getText(), Integer.parseInt(menuPrice.getText()));
             Spinner<Integer> menuSpinner = (Spinner<Integer>) line.getChildren().get(2);
             int menuAmount = menuSpinner.getValue();
+            System.out.println(menu.getName() + " " + menuAmount + " " + menu.getPrice());
             lineItems[i] = new LineItem(menu, menuAmount, Integer.parseInt(menuPrice.getText()));
+            i++;
         }
         Invoice_Cafe invoice = new Invoice_Cafe( new Date(), lineItems);
 

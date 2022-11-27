@@ -44,4 +44,14 @@ public class LineItem {
     public void setSubtotal (int total) {
         this.subtotal = total;
     }
+
+    @Override
+    public String toString() {
+        return "LineItem{" +
+                "menu=" + menu.getName() +
+                ", quantity=" + quantity +
+                ", price=" + price +
+                ", subtotal=" + subtotal +
+                '}';
+    }
 }

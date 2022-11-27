@@ -1,36 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import se.alipsa.ymp.YearMonthPickerCombo?>
 
-<AnchorPane prefHeight="550.0" prefWidth="622.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiger.Controller.ReportController">
+<AnchorPane prefHeight="550.0" prefWidth="622.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.tiger.Controller.ReportController">
    <children>
-      <TableView layoutX="20.0" layoutY="111.0" prefHeight="410.0" prefWidth="582.0" stylesheets="@CSS/Table.css">
+      <TableView fx:id="reportTable" layoutX="20.0" layoutY="111.0" prefHeight="410.0" prefWidth="582.0" stylesheets="@CSS/Table.css">
         <columns>
           <TableColumn fx:id="columnDate" editable="false" prefWidth="150.0" text="วัน-เดือน-ปี" />
-          <TableColumn fx:id="columnList" editable="false" prefWidth="308.0" text="รายการ" />
-            <TableColumn fx:id="columnPrice" editable="false" prefWidth="120.0" text="ราคา" />
+          <TableColumn fx:id="columnList" editable="false" prefWidth="247.2000274658203" text="รายการ" />
+            <TableColumn fx:id="columnQty" text="จำนวน" />
+            <TableColumn fx:id="columnPrice" editable="false" prefWidth="104.0" text="ราคา" />
         </columns>
       </TableView>
-      <Button layoutX="86.0" layoutY="49.0" mnemonicParsing="false" text="ห้องทำงาน">
+      <Button layoutX="58.0" layoutY="49.0" mnemonicParsing="false" text="ห้องทำงาน">
          <font>
             <Font name="Noto Sans Thai Regular" size="14.0" />
          </font>
       </Button>
-      <Button layoutX="208.0" layoutY="49.0" mnemonicParsing="false" text="ร้านกาแฟ">
+      <Button layoutX="174.0" layoutY="49.0" mnemonicParsing="false" text="ร้านกาแฟ">
          <font>
             <Font name="Noto Sans Thai Regular" size="14.0" />
          </font>
       </Button>
-      <ComboBox layoutX="402.0" layoutY="48.0" prefHeight="34.0" prefWidth="160.0" />
       <Button fx:id="btnPrint" layoutX="553.0" layoutY="522.0" mnemonicParsing="false" onAction="#onbtnPrint" style="-fx-background-color: #fff;" text="พิมพ์รายงาน">
          <font>
             <Font name="Noto Sans Thai Regular" size="10.0" />
          </font>
       </Button>
+      <YearMonthPickerCombo fx:id="yearMonthPicker" layoutX="421.0" layoutY="49.0" prefHeight="26.0" prefWidth="102.0" />
    </children>
 </AnchorPane>

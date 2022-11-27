@@ -6,11 +6,12 @@ import com.tiger.Class.InvoiceType;
 
 import java.sql.ResultSet;
 import java.util.Date;
+import java.util.ResourceBundle;
 
 public class Invoice_Cafe extends Invoice {
     private LineItem item[];
 
-    public Invoice_Cafe( Date date, LineItem item[]) {
+    public Invoice_Cafe(Date date, LineItem item[]) {
         super(date);
         this.item = item;
 
@@ -40,24 +41,52 @@ public class Invoice_Cafe extends Invoice {
 
     @Override
     public boolean submit() {
+
+
+
         // save to database
         int[] itemID = new int[item.length];
-        String sql = "select item_id from items where item_name = '%s'";
-        for (int i = 0; i < item.length; i++) {
-            sql = String.format(sql, item[i].getMenu().getName());
+//        for (int i = 0; i < item.length; i++) {
+//            try {
+//                sql = String.format(sql, item[i].getMenu().getName());
+//                System.out.println(sql);
+//                ResultSet rs = new DB_Connector().getResultSet(sql);
+//                if (rs.next()) itemID[i] = rs.getInt("item_id");
+//                System.out.println("itemID = " + itemID[i]);
+//
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+
+        // for each loop
+        DB_Connector db = new DB_Connector();
+        String sql;
+        int index = 0;
+        for (LineItem lineItem : item) {
+            String itemName = lineItem.getMenu().getName();
             try {
-                ResultSet rs = new DB_Connector().getResultSet(sql);
-                if (rs.next()) {
-                    itemID[i] = rs.getInt("item_id");
-                }
+                System.out.println("itemName = " + itemName);
+                String qurey = String.format("select item_id from items where item_name = '%s'",itemName);
+                System.out.println(qurey);
+                ResultSet rs = db.getResultSet(qurey);
+                if (rs.next()) itemID[index] = rs.getInt("item_id");
+                System.out.println("itemID = " + itemID[index]);
+
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
+            index++;
+        }
+
+        // print itemID
+        for (int j = 0; j < itemID.length; j++) {
+            System.out.println(j+" itemID = " + itemID[j]);
         }
 
 
         try {
-            DB_Connector db = new DB_Connector();
             int invoiceType = 0;
             sql = "select type_id from invoice_type where type_name = '%s'";
             sql = String.format(sql, getInvoiceType().toString());
@@ -68,8 +97,8 @@ public class Invoice_Cafe extends Invoice {
                 return false;
             }
 
-            sql = String.format("insert into invoice(inv_type,inv_vat,inv_total,inv_date) values('%d','%.2f','%.2f','%s')",invoiceType,getVat(),getTotal(),getSqlDate());
-            if (!db.execute(sql))return false;
+            sql = String.format("insert into invoice(inv_type,inv_vat,inv_total,inv_date) values('%d','%.2f','%.2f','%s')", invoiceType, getVat(), getTotal(), getSqlDate());
+            if (!db.execute(sql)) return false;
 
             sql = "select inv_id from invoice order by inv_id desc limit 1";
             rs = db.getResultSet(sql);
