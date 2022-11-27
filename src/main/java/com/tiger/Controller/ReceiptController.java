@@ -5,6 +5,7 @@ import com.tiger.Class.Cafe.LineItem;
 import com.tiger.Class.Invoice;
 import com.tiger.Class.InvoiceType;
 import com.tiger.Class.Room.Invoice_Member;
+import com.tiger.Class.Room.Invoice_Room;
 import com.tiger.Class.myAlert;
 import com.tiger.CustomControl.LineReceiptControl;
 import javafx.event.ActionEvent;
@@ -53,6 +54,11 @@ public class ReceiptController implements Initializable {
     @FXML
     private Button btnSubmit;
 
+    @FXML
+    private Label discountLabel;
+
+    @FXML
+    private Label disLabel;
     @FXML
     private Label subTotal;
 
@@ -109,6 +115,18 @@ public class ReceiptController implements Initializable {
         }
     }
 
+    private void setDiscount() {
+
+        if (this.invoiceType == InvoiceType.ROOM) {
+            Invoice_Room invoice_room = (Invoice_Room) this.invoice;
+            double discount = invoice_room.getDiscount();
+            discountLabel.setText(String.format("%.2f", discount));
+        }else{
+            disLabel.setVisible(false);
+            discountLabel.setVisible(false);
+        }
+    }
+
     private void setList() {
         try {
             switch (invoiceType) {
@@ -124,6 +142,12 @@ public class ReceiptController implements Initializable {
                     }
                 }
                 case ROOM -> {
+                    Invoice_Room invoice_room = (Invoice_Room) invoice;
+                    LineReceiptControl lineReceiptControl = new LineReceiptControl();
+                    lineReceiptControl.setListName(invoice_room.getRoom().getName()+" / 3 ชั่วโมง");
+                    lineReceiptControl.setListUnt(invoice_room.getQtyHour());
+                    lineReceiptControl.setListPrice((int) invoice_room.getOriginalPrice());
+                    List.getItems().add(lineReceiptControl);
                 }
                 case MEMBER -> {
                     Invoice_Member invoice_member = (Invoice_Member) invoice;
@@ -139,9 +163,11 @@ public class ReceiptController implements Initializable {
         }
     }
 
+
     private void setAll() {
         setSubTotal();
         setTotal();
+        setDiscount();
         setTax();
         setReceiptID();
         setRecDate();

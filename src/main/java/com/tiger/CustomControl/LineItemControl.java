@@ -37,7 +37,7 @@ public class LineItemControl extends HBox {
         lblItemPrice.setPadding( new javafx.geometry.Insets( 0, 0, 0, 0 ) );
 
         Spinner<Integer> mySpinner = new Spinner<Integer>();
-        mySpinner.setPrefWidth( 60 );
+        mySpinner.setPrefWidth( 65 );
         mySpinner.setPrefHeight( 27 );
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory( 1, 15, 1 );
         mySpinner.setValueFactory( valueFactory );

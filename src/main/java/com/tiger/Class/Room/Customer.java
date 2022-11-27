@@ -56,23 +56,23 @@ public class Customer {
         isMember = member;
     }
 
-    public void reserveRoom(Room room, double hour) {
-
-        if (room.setReserved(true)) {
-            // create new invoice room
-            Invoice invoice = new Invoice_Room(new Date(), this, room, hour);
-            if (invoice.isCreated()) {
-                System.out.println("Room reserved");
-                // show alert dialog
-                new myAlert().showInformationAlert("การจองสำเร็จ");
-
-            } else {
-                System.out.println("Room reservation failed");
-                // show alert dialog
-                new myAlert().showErrorAlert("การจองล้มเหลว");
-            }
-        }
-
-
-    }
+//    public void reserveRoom(Room room, double hour) {
+//
+//        if (room.setReserved(true)) {
+//            // create new invoice room
+//            Invoice invoice = new Invoice_Room(new Date(), this, room, hour);
+//            if (invoice.isCreated()) {
+//                System.out.println("Room reserved");
+//                // show alert dialog
+//                new myAlert().showInformationAlert("การจองสำเร็จ");
+//
+//            } else {
+//                System.out.println("Room reservation failed");
+//                // show alert dialog
+//                new myAlert().showErrorAlert("การจองล้มเหลว");
+//            }
+//        }
+//
+//
+//    }
 }

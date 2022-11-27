@@ -12,6 +12,8 @@ public abstract class Invoice {
     private double subTotal, total;
     private final double TAX = 0.07;
 
+    private double discount = 0;
+
 
     private boolean isCreated = false;
 
@@ -85,6 +87,13 @@ public abstract class Invoice {
         return formatter.format(date);
     }
 
+    public double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(double discount) {
+        this.discount = discount;
+    }
     private String getIdFromDatabase() {
         int lastId = 0;
         String sql = "SELECT inv_id FROM invoice ORDER BY inv_id DESC LIMIT 1";

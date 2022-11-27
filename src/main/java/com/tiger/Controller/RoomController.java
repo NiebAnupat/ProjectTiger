@@ -1,8 +1,11 @@
 package com.tiger.Controller;
 
 
+import com.tiger.Class.DB_Connector;
 import com.tiger.Class.Room.Customer;
 import com.dlsc.gemsfx.TimePicker;
+import com.tiger.Class.Room.Invoice_Room;
+import com.tiger.Class.Room.Room;
 import com.tiger.Class.Room.RoomType;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,17 +19,17 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.Duration;
-import java.time.LocalTime;
-import java.time.Period;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.*;
 import java.util.Date;
 import java.util.ResourceBundle;
 
 public class RoomController implements Initializable {
 
 
-    @FXML
-    private Button btnCheck;
+
 
     @FXML
     private Button btnNext;
@@ -58,6 +61,9 @@ public class RoomController implements Initializable {
     @FXML
     private Label minuteLabel;
 
+    @FXML
+    private Label roomFullLabel;
+
     private Customer customer = null;
 
     private LocalTime startTime = null;
@@ -69,6 +75,8 @@ public class RoomController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        this.setRoomAvailableNow();
+        roomFullLabel.setVisible(false);
         for (RoomType roomType : RoomType.values()) {
             switch (roomType) {
                 case SMALL -> cbRoom.getItems().add("ห้องประชุมเล็ก");
@@ -77,20 +85,33 @@ public class RoomController implements Initializable {
             }
         }
 
+
         cbRoom.getSelectionModel().selectFirst();
+
+        this.ifRoomFull(RoomType.SMALL);
+
 
         // add combo box change listener
         cbRoom.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
             switch (newValue) {
-                case "ห้องประชุมเล็ก" -> priceLabel.setText("150");
-                case "ห้องประชุมใหญ่" -> priceLabel.setText("200");
-                case "รายบุคคล" -> priceLabel.setText("40");
+                case "ห้องประชุมเล็ก" -> {
+                    priceLabel.setText("150");
+                    this.ifRoomFull(RoomType.SMALL);
+                }
+                case "ห้องประชุมใหญ่" -> {
+                    priceLabel.setText("250");
+                    this.ifRoomFull(RoomType.LARGE);
+                }
+                case "รายบุคคล" -> {
+                    priceLabel.setText("40");
+                    this.ifRoomFull(RoomType.INDIVIDUAL);
+                }
             }
         });
 
         txtTimeWarning.setVisible(false);
 
-        startTimePicker.setTime(null);
+//        startTimePicker.setTime(null);
         endTimePicker.setTime(null);
 
         startTimePicker.setDisable(true);
@@ -139,6 +160,11 @@ public class RoomController implements Initializable {
         // add time change listener
         startTimePicker.timeProperty().addListener((observableValue, oldValue, newValue) -> {
             if (newValue != null) {
+                if (newValue.isBefore(LocalTime.now())) {
+                    startTimePicker.setTime(LocalTime.now());
+                    btnNext.setDisable(true);
+                    return;
+                }
                 endTimePicker.setDisable(false);
                 startTime = startTimePicker.getTime();
 
@@ -196,42 +222,91 @@ public class RoomController implements Initializable {
         minute = duration.toMinutes() % 60.0;
     }
 
-
-    @FXML
-    void onbtnCheck(ActionEvent event) {
-        txtMember2.setText("เข้าร่วมสมาชิก!");
-        assert txtMember.getText() != "";
-        customer = new Customer(txtMember.getText());
-        if (customer.getMember()) {
-            txtMember2.setText("พบข้อมูลสมาชิก!");
-            txtMember2.setStyle("-fx-text-fill: green");
+    private void ifRoomFull(RoomType roomType) {
+        if (Room.isRoomFull(roomType)) {
+            roomFullLabel.setVisible(true);
+            txtMember.setDisable(true);
+            txtMember2.setDisable(true);
         } else {
-            txtMember2.setText("ไม่พบข้อมูลสมาชิก สมัครเลย!");
-            txtMember2.setStyle("-fx-text-fill: red");
+            roomFullLabel.setVisible(false);
+            txtMember.setDisable(false);
+            txtMember2.setDisable(false);
         }
     }
+
+    private void setRoomAvailableNow(){
+
+        DB_Connector db = new DB_Connector();
+
+        // select room last_reserved_time that before now
+        String sql = "SELECT * FROM room WHERE last_reserved_end < NOW()";
+
+        try {
+            ResultSet rs = db.getResultSet(sql);
+            while (rs.next()){
+                int r_id = rs.getInt("r_id");
+                // set room available
+                sql = "UPDATE room SET reserved = 0,last_reserved_end = null WHERE r_id = " +r_id;
+                if (!db.execute(sql)) return;
+                System.out.println("Room " + r_id + " is available now");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+
 
     @FXML
     void onbtnNext(ActionEvent event) throws IOException {
 
-        // get start time
-//        Date =
+        // create new customer
+        customer = new Customer(txtMember.getText());
 
-        if (customer != null) {
-            Parent root = FXMLLoader.load(getClass().getResource("receipt.fxml"));
-            Scene scene = new Scene(root);
-            Stage popup = new Stage();
-            popup.initStyle(StageStyle.TRANSPARENT);
-            popup.setScene(scene);
-            popup.show();
-        } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("แจ้งเตือนข้อผิดพลาด");
-            alert.setHeaderText("ไม่พบลูกค้า!");
-            alert.setContentText("กรุณาตรวจสอบข้อมูลลูกค้าอีกครั้ง!");
-            alert.showAndWait();
+        // get room type
+        RoomType roomType = null;
+        switch (cbRoom.getSelectionModel().getSelectedItem()) {
+            case "ห้องประชุมเล็ก" -> roomType = RoomType.SMALL;
+            case "ห้องประชุมใหญ่" -> roomType = RoomType.LARGE;
+            case "รายบุคคล" -> roomType = RoomType.INDIVIDUAL;
         }
 
+        // create new reservation
+        Room room = new Room(roomType, Integer.parseInt(priceLabel.getText()));
 
+        double amount = hour + (minute / 60.0);
+        amount = Math.ceil(amount/3);
+
+
+        // end time to LocalDateTime
+        LocalDateTime endTime = LocalDateTime.of(LocalDate.now(), this.endTime);
+
+        // end time to Timestamp
+        Timestamp timestamp = Timestamp.valueOf(endTime);
+
+        // create new invoice room
+        Invoice_Room invoiceRoom = new Invoice_Room(new Date(),customer,room,amount,timestamp);
+
+        // load next page
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("receipt.fxml"));
+        ReceiptController receiptController = new ReceiptController(invoiceRoom);
+        loader.setController(receiptController);
+        Scene scene = new Scene(loader.load());
+        Stage popup = new Stage();
+        popup.initStyle(StageStyle.TRANSPARENT);
+        popup.setScene(scene);
+        popup.show();
+
+        // clear all
+        txtMember.setText("");
+        txtMember2.setVisible(false);
+        startTimePicker.setTime(null);
+        endTimePicker.setTime(null);
+        cbRoom.getSelectionModel().selectFirst();
+        btnNext.setDisable(true);
+        hourLabel.setText("0");
+        minuteLabel.setText("0");
+        txtTimeWarning.setVisible(false);
     }
 }
