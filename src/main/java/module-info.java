@@ -4,6 +4,7 @@ module com.tiger.tiger {
     requires javafx.graphics;
     requires java.sql;
     requires com.dlsc.gemsfx;
+    requires se.alipsa.ymp;
 
 
     opens com.tiger.Controller to javafx.fxml;

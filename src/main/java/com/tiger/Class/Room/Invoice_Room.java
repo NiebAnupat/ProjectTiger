@@ -89,12 +89,31 @@ public class Invoice_Room extends Invoice {
         if (this.customer.getMember()) sql = String.format("insert into invoice(inv_type,inv_vat,inv_total,inv_date,cus_phone,inv_discount) values('%d','%.2f','%.2f','%s','%s','%.2f')", invoiceType, getVat(), getTotal(), getSqlDate(),getCustomer().getPhoneNum(),getDiscount());
         else sql = String.format("insert into invoice(inv_type,inv_vat,inv_total,inv_date) values('%d','%.2f','%.2f','%s')", invoiceType, getVat(), getTotal(), getSqlDate());
         try {
-            if (new DB_Connector().execute(sql)) {
+            DB_Connector db = new DB_Connector();
+            ResultSet rs ;
+            if (db.execute(sql)) {
 
             // update room status
                 sql = String.format("update room set reserved = 1, last_reserved_end='%s' where r_id = '%d'",this.lastReservedDate,room.getRoomID());
-                if (!new DB_Connector().execute(sql)) return false;
+                if (!db.execute(sql)) return false;
 
+                // get invoiceID
+                sql = "select inv_id from invoice order by inv_id desc limit 1";
+                rs = db.getResultSet(sql);
+                if (!rs.next()) return false;
+                int lastId = rs.getInt("inv_id");
+
+                // get itemID
+                sql = "select item_id from items where item_name = '%s'";
+                sql = String.format(sql, itemName);
+                rs = db.getResultSet(sql);
+                if (!rs.next()) return false;
+                int itemID = rs.getInt("item_id");
+
+                // insert invoice_item
+                sql = "INSERT INTO invoice_items (inv_id,item_id,qty,subtotal) VALUES ('%d','%d','%d','%.2f')";
+                sql = String.format(sql, lastId, itemID, 1, getSubTotal());
+                if (!db.execute(sql)) return false;
                 return true;
             } else {
                 System.out.println("Invoice Room failed");

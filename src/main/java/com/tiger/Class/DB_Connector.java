@@ -84,4 +84,9 @@ public class DB_Connector {
     // ---------------------------------------------------------------------
 
 
+    public Statement getSt() throws SQLException {
+        connectDB();
+        st = conn.createStatement();
+        return st;
+    }
 }
