@@ -28,11 +28,6 @@
             <Font name="Noto Sans Thai Regular" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="btnPrint" layoutX="553.0" layoutY="522.0" mnemonicParsing="false" style="-fx-background-color: #fff;" text="พิมพ์รายงาน">
-         <font>
-            <Font name="Noto Sans Thai Regular" size="10.0" />
-         </font>
-      </Button>
       <YearMonthPickerCombo fx:id="yearMonthPicker" layoutX="499.0" layoutY="52.0" prefHeight="26.0" prefWidth="102.0">
          <opaqueInsets>
             <Insets />

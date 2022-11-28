@@ -143,6 +143,6 @@ public class Room {
 
 
     public int getRoomID() {
-        return 1;
+        return this.id;
     }
 }
